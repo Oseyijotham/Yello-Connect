@@ -40,7 +40,7 @@ export const logIn = createAsyncThunk(
   'auth/login',
   async ({ email, password }, thunkAPI) => {
     Notiflix.Loading.pulse('Logging You In...', {
-      svgColor: '#FFB8CA',
+      svgColor: 'rgb(235, 144, 25)',
       fontFamily: 'DM Sans',
     });
     try {

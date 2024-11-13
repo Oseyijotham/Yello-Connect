@@ -1,7 +1,7 @@
 import { useDispatch } from 'react-redux';
 import { logIn } from '../../redux/AuthRedux/operations';
 import css from './Login.module.css';
-import logoImage from '../SharedLayout/call.png';
+import logoImage from './call.png';
 
 import { NavLink } from 'react-router-dom';
 import { useAuthHook } from '../../customHook/customHook';
@@ -42,7 +42,7 @@ export const Login = () => {
               <div role="img" aria-label="computer icon" className={css.frame}>
                 <img src={logoImage} alt="Logo" width="50px" />
               </div>
-              <span className={css.iconLabel}>Sweet</span>
+              <span className={css.iconLabel}>Yello</span>
               <span className={css.iconLabel}>Connect</span>
             </div>
           </div>

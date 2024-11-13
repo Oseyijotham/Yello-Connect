@@ -19,7 +19,7 @@
 display: block;
 margin-top: 1px;
 margin-bottom: 10px;
-color: #c4253a;
+color: rgb(114, 17, 17);
 }
 
 .inputTextInfo{
@@ -30,9 +30,9 @@ margin-bottom: 2px;
 
 .inputButton{
     padding: 7px;
-    background-color: #FFA5BA;
+    background-color: #f1dbba;
     font-family: 'DM Sans';
-    color: #c4253a;
+    color: rgb(114, 17, 17);
     font-weight: 700;
     border-radius: 30px;
     border: none;
@@ -43,6 +43,7 @@ margin-bottom: 2px;
 }
 
 .inputButton:hover{
+  background-color:rgb(235, 144, 25);
   color: #fff;
 }
 
@@ -61,8 +62,8 @@ margin-bottom: 2px;
     font-weight: 700;
     margin-top: 3px;
     padding: 10px;
-    background-color: #FFB8CA;
-    color: #c4253a;
+    background-color: rgb(240, 164, 65);
+    color: rgb(114, 17, 17);
     border-radius: 30px;
     box-shadow: inset 0 0 10px 5px rgba(0, 0, 0, 0.3);
     border: 1px solid #fff;
@@ -74,14 +75,14 @@ margin-bottom: 2px;
   flex-direction: column;
   margin-bottom: 16px;
   text-align: start;
-  color: #fff;
+  color: rgb(114, 17, 17);
   font-family: "DM Sans";
 }
 
 .formContainer{
   border-radius: 30px;
   padding: 10px;
-  background-image: linear-gradient(rgb(196, 37, 58) 40%, rgb(255, 184, 202));
+  background-image: linear-gradient(rgb(235, 144, 25) 60%, #FFF);
   border: none;
 }
 
@@ -90,7 +91,7 @@ margin-bottom: 2px;
 
 .frame{
   border-radius: 50%;
-  background-color: #FFB8CA;
+  background-color: rgb(114, 17, 17);
   display: flex;
   flex-direction: column;
   align-items: center;

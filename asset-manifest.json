@@ -1,34 +1,34 @@
 {
   "files": {
-    "main.css": "/Yello-Connect/static/css/main.08496983.css",
-    "main.js": "/Yello-Connect/static/js/main.955090ca.js",
+    "main.css": "/Yello-Connect/static/css/main.1bd791ec.css",
+    "main.js": "/Yello-Connect/static/js/main.3bc0b11b.js",
     "static/css/775.487bbdf8.chunk.css": "/Yello-Connect/static/css/775.487bbdf8.chunk.css",
     "static/js/775.357b12c0.chunk.js": "/Yello-Connect/static/js/775.357b12c0.chunk.js",
-    "static/css/294.ff63ac42.chunk.css": "/Yello-Connect/static/css/294.ff63ac42.chunk.css",
-    "static/js/294.6c035218.chunk.js": "/Yello-Connect/static/js/294.6c035218.chunk.js",
+    "static/css/518.1b91fbac.chunk.css": "/Yello-Connect/static/css/518.1b91fbac.chunk.css",
+    "static/js/518.8c5f60ac.chunk.js": "/Yello-Connect/static/js/518.8c5f60ac.chunk.js",
     "static/css/962.8f236d0b.chunk.css": "/Yello-Connect/static/css/962.8f236d0b.chunk.css",
     "static/js/962.0c6ec893.chunk.js": "/Yello-Connect/static/js/962.0c6ec893.chunk.js",
     "static/css/433.738574c9.chunk.css": "/Yello-Connect/static/css/433.738574c9.chunk.css",
     "static/js/433.82279af0.chunk.js": "/Yello-Connect/static/js/433.82279af0.chunk.js",
-    "static/css/461.89f4b726.chunk.css": "/Yello-Connect/static/css/461.89f4b726.chunk.css",
-    "static/js/461.2dd7783c.chunk.js": "/Yello-Connect/static/js/461.2dd7783c.chunk.js",
+    "static/css/461.c66a83cb.chunk.css": "/Yello-Connect/static/css/461.c66a83cb.chunk.css",
+    "static/js/461.0efb7ed0.chunk.js": "/Yello-Connect/static/js/461.0efb7ed0.chunk.js",
     "static/media/call.png": "/Yello-Connect/static/media/call.7cb68d89441660ef1444.png",
     "index.html": "/Yello-Connect/index.html",
-    "main.08496983.css.map": "/Yello-Connect/static/css/main.08496983.css.map",
-    "main.955090ca.js.map": "/Yello-Connect/static/js/main.955090ca.js.map",
+    "main.1bd791ec.css.map": "/Yello-Connect/static/css/main.1bd791ec.css.map",
+    "main.3bc0b11b.js.map": "/Yello-Connect/static/js/main.3bc0b11b.js.map",
     "775.487bbdf8.chunk.css.map": "/Yello-Connect/static/css/775.487bbdf8.chunk.css.map",
     "775.357b12c0.chunk.js.map": "/Yello-Connect/static/js/775.357b12c0.chunk.js.map",
-    "294.ff63ac42.chunk.css.map": "/Yello-Connect/static/css/294.ff63ac42.chunk.css.map",
-    "294.6c035218.chunk.js.map": "/Yello-Connect/static/js/294.6c035218.chunk.js.map",
+    "518.1b91fbac.chunk.css.map": "/Yello-Connect/static/css/518.1b91fbac.chunk.css.map",
+    "518.8c5f60ac.chunk.js.map": "/Yello-Connect/static/js/518.8c5f60ac.chunk.js.map",
     "962.8f236d0b.chunk.css.map": "/Yello-Connect/static/css/962.8f236d0b.chunk.css.map",
     "962.0c6ec893.chunk.js.map": "/Yello-Connect/static/js/962.0c6ec893.chunk.js.map",
     "433.738574c9.chunk.css.map": "/Yello-Connect/static/css/433.738574c9.chunk.css.map",
     "433.82279af0.chunk.js.map": "/Yello-Connect/static/js/433.82279af0.chunk.js.map",
-    "461.89f4b726.chunk.css.map": "/Yello-Connect/static/css/461.89f4b726.chunk.css.map",
-    "461.2dd7783c.chunk.js.map": "/Yello-Connect/static/js/461.2dd7783c.chunk.js.map"
+    "461.c66a83cb.chunk.css.map": "/Yello-Connect/static/css/461.c66a83cb.chunk.css.map",
+    "461.0efb7ed0.chunk.js.map": "/Yello-Connect/static/js/461.0efb7ed0.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.08496983.css",
-    "static/js/main.955090ca.js"
+    "static/css/main.1bd791ec.css",
+    "static/js/main.3bc0b11b.js"
   ]
 }

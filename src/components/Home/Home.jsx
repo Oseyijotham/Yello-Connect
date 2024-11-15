@@ -33,7 +33,7 @@ export const Home = () => {
         <div className={css.homeTitle}>Your Contacts, Anytime, Anywhere</div>
         <div className={css.homeIntro}>
           <i>
-            Welcome to Sweet Connect! Securely store your contacts and access
+            Welcome to Yello Connect! Securely store your contacts and access
             them on any device. Our user-friendly platform makes it easy to keep
             your connections organized and up-to-date.
           </i>
@@ -47,28 +47,34 @@ export const Home = () => {
       {error && <div>There was an error</div>}
       {myVal && (
         <div className={css.detailsSection}>
-          <h2 className={css.detailsSectionTitle}>API DETAILS</h2>
+          <h2 className={css.detailsSectionTitle}>YOUR DETAILS</h2>
           <ul className={css.detailsWrapper}>
             <li className={css.detailsItem}>
-              <span className={css.details}>Api Key Name:</span>{' '}
+              <span className={css.details}>First Name:</span>{' '}
               <span className={css.detailsVal}>
                 <i>{myValName}</i>
               </span>
             </li>
             <li className={css.detailsItem}>
-              <span className={css.details}>Api Key:</span>{' '}
+              <span className={css.details}>Last Name:</span>{' '}
               <span className={css.detailsVal}>
                 <i>{myVal}</i>
               </span>
             </li>
             <li className={css.detailsItem}>
-              <span className={css.details}>Api Id:</span>{' '}
+              <span className={css.details}>Email:</span>{' '}
               <span className={css.detailsVal}>
                 <i>{myValId}</i>
               </span>
             </li>
             <li className={css.detailsItem}>
-              <span className={css.details}>Api Creation Date:</span>{' '}
+              <span className={css.details}>Phone Number:</span>{' '}
+              <span className={css.detailsVal}>
+                <i>{myValId}</i>
+              </span>
+            </li>
+            <li className={css.detailsItem}>
+              <span className={css.details}>Groups:</span>{' '}
               <span className={css.detailsVal}>
                 <i>{myValDate}</i>
               </span>

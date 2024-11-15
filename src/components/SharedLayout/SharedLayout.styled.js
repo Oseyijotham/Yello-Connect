@@ -9,7 +9,7 @@ export const Container = styled.div`
 
 export const Frame = styled.div`
   border-radius: 50%;
-  background-color:#FFB8CA;
+  background-color: rgb(114, 17, 17);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -61,13 +61,12 @@ export const Header = styled.header`
   margin-top: 8px;
   border: none;
   background-color: #c4253a;
-  background-image: linear-gradient(to bottom, #c4253a 40%, #ffb8ca);
+  background-image: linear-gradient(to bottom, rgb(235, 144, 25) 40%, #fff);
+  background-image: linear-gradient(rgb(235, 144, 25), #f1dbba);
   border-radius: 30px;
   filter: drop-shadow(0px 8px 8px rgba(0, 0, 0, 0.3));
-  
 
   &:hover {
-    
   }
 
   > nav {

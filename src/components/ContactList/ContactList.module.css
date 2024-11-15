@@ -25,26 +25,26 @@
   flex-direction: column;
   gap: 5px;
   list-style: circle;
-      background-color: #FFB8CA;
+      background-color: #f1dbba;
     border: 2px solid #fff;
     border-radius: 4px;
     padding: 6px;
 }
 
 .contactsData{
-  background-color: #FFB8CA;
+  background-color: #f1dbba;
   border: 1px solid #fff;
     border-radius: 4px;
     padding: 3px;
     font-weight: 700;
-    color: #c4253a;
+    color: rgb(114, 17, 17);
 }
 
 .contactsItem {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #c4253a;
+  background-color: rgb(235, 144, 25);
     border: 1px solid #fff;
     border-radius: 4px;
     padding: 5px;
@@ -67,6 +67,12 @@
   font-weight: 700;
   cursor: pointer;
     border: none;
-    color: #c4253a;
-    background-color: #FFA5BA;
+    color: rgb(114, 17, 17);
+    background-color: #f1dbba;
+    border: 1px solid #fff;
+}
+
+.contactsButton:hover{
+color: #fff;
+background-color: rgb(240, 164, 65);
 }

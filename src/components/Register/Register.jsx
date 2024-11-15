@@ -1,7 +1,7 @@
 import { useDispatch } from 'react-redux';
 import { register } from '../../redux/AuthRedux/operations';
 import css from './Register.module.css';
-import logoImage from '../SharedLayout/call.png';
+import logoImage from './call.png';
 //import { useAuthHook } from '../../customHook/customHook';
 //import { useEffect } from 'react';
 
@@ -34,7 +34,7 @@ const handleSubmit = e => {
             <div role="img" aria-label="computer icon" className={css.frame}>
               <img src={logoImage} alt="Logo" width="50px" />
             </div>
-            <span className={css.iconLabel}>Sweet</span>
+            <span className={css.iconLabel}>Yello</span>
             <span className={css.iconLabel}>Connect</span>
           </div>
         </div>
@@ -47,13 +47,25 @@ const handleSubmit = e => {
               autoComplete="off"
             >
               <label className={css.label}>
-                Username
+                First Name
                 <input
                   type="text"
-                  name="name"
+                  name="fistname"
                   className={css.input}
-                  placeholder="Enter a Username"
-                  title="Enter a Username"
+                  placeholder="Enter Your First Name"
+                  title="Enter Your First Name"
+                  autoComplete="off"
+                  required
+                />
+              </label>
+              <label className={css.label}>
+                Last Name
+                <input
+                  type="text"
+                  name="lastname"
+                  className={css.input}
+                  placeholder="Enter Your Last Name"
+                  title="Enter Your Last Name"
                   autoComplete="off"
                   required
                 />
@@ -66,6 +78,18 @@ const handleSubmit = e => {
                   className={css.input}
                   placeholder="Enter Email Address"
                   title="Enter Email Address"
+                  autoComplete="off"
+                  required
+                />
+              </label>
+              <label className={css.label}>
+                Phone Number
+                <input
+                  type="number"
+                  name="phone"
+                  className={css.input}
+                  placeholder="Enter Phone Number"
+                  title="Enter Phone Number"
                   autoComplete="off"
                   required
                 />

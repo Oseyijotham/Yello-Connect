@@ -4,21 +4,29 @@
     align-items: center;
     justify-content: center;
     gap: 10px;
-     flex-grow: 1;
+    flex-grow: 1;
+  
 }
+
 
 .inputText{
 display: block;
 margin-top: 1px;
-margin-bottom: 1px;
-color: #c4253a;
+margin-bottom: 10px;
+color: rgb(114, 17, 17);
+}
+
+.inputTextInfo{
+display: block;
+margin-top: 2px;
+margin-bottom: 2px;
 }
 
 .inputButton{
-       padding: 7px;
-    background-color: #FFA5BA;
+    padding: 7px;
+    background-color: #f1dbba;
     font-family: 'DM Sans';
-    color: #c4253a;
+    color: rgb(114, 17, 17);
     font-weight: 700;
     border-radius: 30px;
     border: none;
@@ -29,28 +37,30 @@ color: #c4253a;
 }
 
 .inputButton:hover{
+  background-color:rgb(235, 144, 25);
   color: #fff;
 }
 
 .form {
   width: 320px;
-  font-family: 'DM Sans';
-  color:#c4253a;
+   font-family: 'DM Sans';
   font-weight: 700;
   text-align: center;
+  padding: 5px;
 }
 
 .input{
-  border-radius: 4px;
+    border-radius: 4px;
     font-family: 'DM Sans';
     font-weight: 700;
     margin-top: 3px;
     padding: 10px;
-    background-color: #FFB8CA;
-    color: #c4253a;
+    background-color: rgb(240, 164, 65);
+    color: rgb(114, 17, 17);
     border-radius: 30px;
     box-shadow: inset 0 0 10px 5px rgba(0, 0, 0, 0.3);
     border: 1px solid #fff;
+    
 }
 
 .label {
@@ -58,14 +68,14 @@ color: #c4253a;
   flex-direction: column;
   margin-bottom: 16px;
   text-align: start;
-  color: #fff;
+  color: rgb(114, 17, 17);
   font-family: "DM Sans";
 }
 
 .formContainer{
-    border-radius: 30px;
+  border-radius: 30px;
   padding: 10px;
-  background-image: linear-gradient(rgb(196, 37, 58) 40%, rgb(255, 184, 202));
+  background-image: linear-gradient(rgb(235, 144, 25) 60%, #f1dbba);
   border: none;
 }
 
@@ -73,8 +83,8 @@ color: #c4253a;
 
 
 .frame{
-    border-radius: 50%;
-  background-color: #FFB8CA;
+  border-radius: 50%;
+  background-color: rgb(114, 17, 17);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -87,7 +97,7 @@ color: #c4253a;
 
 
 .iconLabel{
-   font-family: 'Sacramento';
+  font-family: 'Sacramento';
   font-size: 40px;
   color: #fff;
   text-shadow: 3px 3px 20px rgb(114, 17, 17), 5px 5px 5px #000000;
@@ -101,7 +111,6 @@ color: #c4253a;
 
 
 .logo{
-  margin-left: 10px;
   font-weight: 700;
   display: flex;
   align-items: flex-end;

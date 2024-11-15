@@ -3,7 +3,7 @@
     font-weight: 700;
     margin-bottom: 3px;
     color: #fff;
-    background-color: #c4253a;
+    background-color: rgb(235, 144, 25);
     border: 2px solid #fff;
     border-radius: 30px;
     padding: 8px;
@@ -12,8 +12,8 @@
 
 .formInput {
     display: block;
-    background-color: #FFB8CA;
-    color: #c4253a;
+    background-color: #f1dbba;
+    color: rgb(114, 17, 17);
     padding: 10px;
     border-radius: 30px;
     font-family: 'DM Sans';
@@ -29,28 +29,28 @@
   display: flex;
   flex-direction: column;
   gap: 5px;
-  list-style: circle;
   margin-top: 10px;
-      background-color: #FFB8CA;
+  list-style: circle;
+      background-color: #f1dbba;
     border: 2px solid #fff;
     border-radius: 4px;
     padding: 6px;
 }
 
 .contactsData{
-  background-color: #FFB8CA;
+  background-color: #f1dbba;
   border: 1px solid #fff;
     border-radius: 4px;
     padding: 3px;
     font-weight: 700;
-    color: #c4253a;
+    color: rgb(114, 17, 17);
 }
 
 .contactsItem {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #c4253a;
+  background-color: rgb(235, 144, 25);
     border: 1px solid #fff;
     border-radius: 4px;
     padding: 5px;

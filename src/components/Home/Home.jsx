@@ -1,32 +1,31 @@
 import css from './Home.module.css';
 import { Link } from "react-router-dom";
 import { useEffect } from 'react';
-import { retrieveApiKey } from '../../redux/AppRedux/operations';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   selectError,
   selectIsLoading,
-  selectVal,
-  //selectIsKeyLoading,
-  selectValName,
-  selectValId,
-  selectValDate,
 } from '../../redux/AppRedux/selectors';
+import { selectUser } from '../../redux/AuthRedux/selectors';
+import { updateAvatar } from '../../redux/AuthRedux/operations';
+
 
 export const Home = () => {
   const dispatch = useDispatch();
   const isLoading = useSelector(selectIsLoading);
   const error = useSelector(selectError);
-  const myVal = useSelector(selectVal);
-  //const isMyValLoading = useSelector(selectIsKeyLoading);
-  const myValName = useSelector(selectValName);
-  const myValId = useSelector(selectValId);
-  const myValDate = useSelector(selectValDate);
+  const myUser = useSelector(selectUser);
+   const handleImageChange = e => {
+     const file = e.target.files[0];
+     //dispatch(updateAvatar({ avatar: file }));
+     console.log({ avatar: file });
+     if (file) {
+       dispatch(updateAvatar({ avatar: file })); // Store the file under the key "avatar"
+     }
+   };
 
 
-  useEffect(() => {
-    dispatch(retrieveApiKey());
-  }, [dispatch]);
+  useEffect(() => {}, [dispatch]);
   return (
     <div className={css.homeDisplay}>
       <div>
@@ -45,43 +44,71 @@ export const Home = () => {
 
       {isLoading && !error && <div>Please wait...</div>}
       {error && <div>There was an error</div>}
-      {myVal && (
-        <div className={css.detailsSection}>
-          <h2 className={css.detailsSectionTitle}>YOUR DETAILS</h2>
-          <ul className={css.detailsWrapper}>
-            <li className={css.detailsItem}>
-              <span className={css.details}>First Name:</span>{' '}
-              <span className={css.detailsVal}>
-                <i>{myValName}</i>
-              </span>
-            </li>
-            <li className={css.detailsItem}>
-              <span className={css.details}>Last Name:</span>{' '}
-              <span className={css.detailsVal}>
-                <i>{myVal}</i>
-              </span>
-            </li>
-            <li className={css.detailsItem}>
-              <span className={css.details}>Email:</span>{' '}
-              <span className={css.detailsVal}>
-                <i>{myValId}</i>
-              </span>
-            </li>
-            <li className={css.detailsItem}>
-              <span className={css.details}>Phone Number:</span>{' '}
-              <span className={css.detailsVal}>
-                <i>{myValId}</i>
-              </span>
-            </li>
-            <li className={css.detailsItem}>
-              <span className={css.details}>Groups:</span>{' '}
-              <span className={css.detailsVal}>
-                <i>{myValDate}</i>
-              </span>
-            </li>
-          </ul>
+
+      <div className={css.detailsSection}>
+        <h2 className={css.detailsSectionTitle}>YOUR DETAILS</h2>
+        <div className={css.detailsImageWrapper}>
+          <img
+            className={css.detailsImage}
+            src={`http://localhost:8000${myUser.avatarURL}`}
+            alt="User"
+          />
+          {console.log(myUser.avatarURL)}
         </div>
-      )}
+        <input
+          className={css.detailsImageButton}
+          type="file"
+          accept="image/*"
+          name="avatar"
+          onChange={handleImageChange}
+          id="2"
+        />
+        <label className={css.detailsImageInput} htmlFor="2">
+          Update Picture +
+        </label>
+        <ul className={css.detailsWrapper}>
+          <li className={css.detailsItem}>
+            <span className={css.detailsCover}>
+              <span className={css.details}>First Name:-</span>{' '}
+              <span className={css.detailsVal}>
+                <i className={css.detail}>{myUser.firstname}</i>
+              </span>
+            </span>
+          </li>
+          <li className={css.detailsItem}>
+            <span className={css.detailsCover}>
+              <span className={css.details}>Last Name:-</span>{' '}
+              <span className={css.detailsVal}>
+                <i className={css.detail}>{myUser.lastname}</i>
+              </span>
+            </span>
+          </li>
+          <li className={css.detailsItem}>
+            <span className={css.detailsCover}>
+              <span className={css.details}>Email:-</span>{' '}
+              <span className={css.detailsVal}>
+                <i className={css.detail}>{myUser.email}</i>
+              </span>
+            </span>
+          </li>
+          <li className={css.detailsItem}>
+            <span className={css.detailsCover}>
+              <span className={css.details}>Phone Number:-</span>{' '}
+              <span className={css.detailsVal}>
+                <i className={css.detail}>{myUser.phone}</i>
+              </span>
+            </span>
+          </li>
+          <li className={css.detailsItem}>
+            <span className={css.detailsCover}>
+              <span className={css.details}>Groups:-</span>{' '}
+              <span className={css.detailsVal}>
+                <i className={css.detail}>{myUser.groups.join(', ')}</i>
+              </span>
+            </span>
+          </li>
+        </ul>
+      </div>
     </div>
   );
     

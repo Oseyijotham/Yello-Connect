@@ -3,16 +3,14 @@ import { createSlice } from '@reduxjs/toolkit';
 import {
   fetchContacts,
   addContact,
-  deleteContact,
-  retrieveApiKey,
-  getApiKey,
+  deleteContact
 } from './operations';
 
 const handlePending = state => {
   state.contacts.isLoading = true;
 };
 
-const handleKeyPending = state => {
+/*const handleKeyPending = state => {
   state.contacts.isKeyLoading = true;
   state.contacts.error = null;
 };
@@ -20,7 +18,8 @@ const handleKeyPending = state => {
 const handleKeyRejected = (state, action) => {
   state.contacts.isKeyLoading = false;
   state.contacts.error = action.payload;
-};
+};*/
+
 const handleRejected = (state, action) => {
   state.contacts.isLoading = false;
   state.contacts.error = action.payload;
@@ -34,11 +33,7 @@ const contactsSlice = createSlice({
       items: [],
       isLoading: false,
       isKeyLoading: false,
-      error: null,
-      val: null,
-      valName: null,
-      valId: null,
-      valDate: null,
+      error: null
     },
   },
   extraReducers: builder => {
@@ -50,23 +45,7 @@ const contactsSlice = createSlice({
         state.contacts.items = action.payload;
       })
       .addCase(fetchContacts.rejected, handleRejected)
-      .addCase(getApiKey.pending, handleKeyPending)
-      .addCase(getApiKey.fulfilled, (state, action) => {
-        state.contacts.isLoading = false;
-        state.contacts.error = null;
-        state.contacts.val = action.payload.key;
-      })
-      .addCase(getApiKey.rejected, handleKeyRejected)
-      .addCase(retrieveApiKey.pending, handlePending)
-      .addCase(retrieveApiKey.fulfilled, (state, action) => {
-        state.contacts.isLoading = false;
-        state.contacts.error = null;
-        state.contacts.val = action.payload.apiKey;
-        state.contacts.valName = action.payload.apiKeyName;
-        state.contacts.valId = action.payload.apiAccountId;
-        state.contacts.valDate = action.payload.apiCreationDate;
-      })
-      .addCase(retrieveApiKey.rejected, handleRejected)
+      
       .addCase(addContact.pending, handlePending)
       .addCase(addContact.fulfilled, (state, action) => {
         state.contacts.isLoading = false;

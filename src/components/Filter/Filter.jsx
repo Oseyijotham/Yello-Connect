@@ -42,7 +42,7 @@ export const Filter = () => {
       {filterValue !== '' && bestMatches.length !== 0 &&(
           <ul className={css.contactsList}>
             {bestMatches.map(contact => (
-              <li key={contact.id} className={css.contactsItem}>
+              <li key={contact._id} className={css.contactsItem}>
                 <span className={css.contactsData}>
                   {contact.name}: {contact.phone}
                 </span>

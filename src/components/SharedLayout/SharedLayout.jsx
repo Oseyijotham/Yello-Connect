@@ -44,7 +44,7 @@ export const SharedLayout = () => {
           </Logo>
         </Symbol>
         <div>
-          <Greeting>Welcome,</Greeting> <Greeting>{user.name}</Greeting>
+          <Greeting>Welcome,</Greeting> <Greeting>{user.firstname}</Greeting>
         </div>
         <nav>
           <Link to="/sharedLayout/Home">Home</Link>

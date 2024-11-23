@@ -1,12 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { register, logIn, logOut, refreshUser } from './operations';
+import { register, logIn, logOut, refreshUser, updateAvatar } from './operations';
 
 const initialState = {
-  user: { name: null, email: null, subscription: null},
+  user: { firstname: null, lastname: null, email:null, phone:null, avatarURL:null, groups:null },
   token: null,
   isLoggedIn: false,
   isRegistered: false,
-  isRefreshing: false,
+  isRefreshing: false
 };
 
 const authSlice = createSlice({
@@ -19,6 +19,10 @@ const authSlice = createSlice({
         //state.token = action.payload.token;
         state.isRegistered = true;
       })
+      .addCase(updateAvatar.fulfilled, (state, action) => {
+        state.user.avatarURL = action.payload.avatarURL;
+        //state.token = action.payload.token;
+      })
       .addCase(logIn.fulfilled, (state, action) => {
         state.user = action.payload.user;
         state.token = action.payload.token;
@@ -26,7 +30,13 @@ const authSlice = createSlice({
         //state.isRegistered = false;
       })
       .addCase(logOut.fulfilled, state => {
-        state.user = { name: null, email: null };
+        state.user = {
+          firstname: null,
+          lastname: null,
+          email: null,
+          phone: null,
+          avatarURL: null,
+        };
         state.token = null;
         state.isLoggedIn = false;
         state.isRegistered = false;
@@ -35,7 +45,7 @@ const authSlice = createSlice({
         state.isRefreshing = true;
       })
       .addCase(refreshUser.fulfilled, (state, action) => {
-        state.user = action.payload;
+        state.user = action.payload.user;
         state.isLoggedIn = true;
         state.isRefreshing = false;
       })

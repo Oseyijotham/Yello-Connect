@@ -2,7 +2,7 @@ import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import Notiflix from 'notiflix';
 
-axios.defaults.baseURL = 'https://backend-v2-zbgo.onrender.com/api';
+axios.defaults.baseURL = 'http://localhost:8000/api';
 
 const setAuthHeader = token => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
@@ -15,15 +15,21 @@ const clearAuthHeader = () => {
 
 export const register = createAsyncThunk(
   'auth/register',
-  async ({ name, email, password }, thunkAPI) => {
+  async ({ firstName, lastName, email, phone, password }, thunkAPI) => {
     Notiflix.Loading.pulse('Registering Your Account...', {
       svgColor: '#FFB8CA',
       fontFamily: 'DM Sans',
     });
     try {
-      const res = await axios.post('/users/signup', { name, email, password });
-      
-       Notiflix.Loading.remove();
+      const res = await axios.post('/users/signup', {
+        firstName,
+        lastName,
+        email,
+        phone,
+        password,
+      });
+
+      Notiflix.Loading.remove();
       return res.data;
     } catch (error) {
       alert(
@@ -47,7 +53,8 @@ export const logIn = createAsyncThunk(
       const res = await axios.post('/users/login', { email, password });
       
       setAuthHeader(res.data.token);
-       Notiflix.Loading.remove();
+      Notiflix.Loading.remove();
+      console.log(res.data);
       return res.data;
     } catch (error) {
       alert('Incorrect email or password');
@@ -93,6 +100,28 @@ export const refreshUser = createAsyncThunk(
       const res = await axios.get('/users/current');
       return res.data;
     } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const updateAvatar = createAsyncThunk(
+  'auth/updateAvatar',
+  async (file, thunkAPI) => {
+    Notiflix.Loading.pulse('Updating Your Picture...', {
+      svgColor: '#FFB8CA',
+      fontFamily: 'DM Sans',
+    });
+    try {
+      const res = await axios.patch('/users/avatars', file, { headers: { 'Content-Type': 'multipart/form-data' } });
+
+      Notiflix.Loading.remove();
+      return res.data;
+    } catch (error) {
+      alert(
+        'Incorrect Input'
+      );
+      Notiflix.Loading.remove();
       return thunkAPI.rejectWithValue(error.message);
     }
   }

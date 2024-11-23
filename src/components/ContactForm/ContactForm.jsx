@@ -1,5 +1,5 @@
 import { addContact } from '../../redux/AppRedux/operations';
-import { selectContacts, selectVal } from '../../redux/AppRedux/selectors';
+import { selectContacts} from '../../redux/AppRedux/selectors';
 import css from './ContactForm.module.css';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
@@ -10,15 +10,8 @@ export const ContactForm = ({ children }) => {
   const contactNameId = nanoid();
   const contactNumberId = nanoid();
   const contacts = useSelector(selectContacts);
-  const myVal = useSelector(selectVal);
   const dispatch = useDispatch();
 
-  const isMyVal = (bull) => {
-    if (bull) {
-      return false;
-    }
-    else return true;
-  }
 
   const handleButtonPress = evt => {
     evt.target.style.boxShadow = 'inset 0 0 10px 5px rgba(0, 0, 0, 0.3)';
@@ -65,7 +58,6 @@ export const ContactForm = ({ children }) => {
             autoComplete="off"
             id={contactNameId}
             className={css.formInput}
-            disabled={isMyVal(myVal)}
           />
         </label>
         <label>
@@ -80,7 +72,6 @@ export const ContactForm = ({ children }) => {
             className={css.formInput}
             pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
             title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
-            disabled={isMyVal(myVal)}
           />
         </label>
         <div className={css.buttonArea}>
@@ -89,7 +80,6 @@ export const ContactForm = ({ children }) => {
             name="button"
             className={css.button}
             onClick={handleButtonPress}
-            disabled={isMyVal(myVal)}
           >
             Add Contact
           </button>

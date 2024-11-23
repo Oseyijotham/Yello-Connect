@@ -19,8 +19,10 @@ const handleSubmit = e => {
   const form = e.currentTarget;
   dispatch(
     register({
-      name: form.elements.name.value,
+      firstName: form.elements.firstname.value,
+      lastName: form.elements.lastname.value,
       email: form.elements.email.value,
+      phone: form.elements.phone.value,
       password: form.elements.password.value,
     })
   );
@@ -50,7 +52,7 @@ const handleSubmit = e => {
                 First Name
                 <input
                   type="text"
-                  name="fistname"
+                  name="firstname"
                   className={css.input}
                   placeholder="Enter Your First Name"
                   title="Enter Your First Name"

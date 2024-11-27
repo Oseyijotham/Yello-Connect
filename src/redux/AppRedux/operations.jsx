@@ -2,26 +2,34 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 import Notiflix from 'notiflix';
 
+export const openModal = createAsyncThunk('modal/open', async (_, thunkAPI) => {
+  return true;
+});
 
-export const getApiKey = createAsyncThunk(
-  'contacts/getApiKey',
-  async ({
-          name,
-          customMetaData,
-          customAccountId
-  }, thunkAPI) => {
-   
+export const closeModal = createAsyncThunk(
+  'modal/close',
+  async (_, thunkAPI) => {
+    console.log("Now");
+    return false;
+  }
+);
+
+export const clearModal = createAsyncThunk(
+  'modal/clear',
+  async (_, thunkAPI) => {
+    return false;
+  }
+);
+
+export const fetchContactById = createAsyncThunk(
+  'contacts/fetchById',
+  async (id, thunkAPI) => {
     try {
-      const res = await axios.post('/contacts/key', {
-        name,
-        customMetaData,
-        customAccountId,
-      });
-      alert("API KEY CREATED, CHECK HOMEPAGE for DETAILS");
-      console.log(res.data);
-      return res.data;
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      const response = await axios.get(`/contacts/${id}`);
+      //console.log (response.data);
+      return response.data;
+    } catch (e) {
+      return thunkAPI.rejectWithValue(e.message);
     }
   }
 );
@@ -46,7 +54,6 @@ export const retrieveApiKey = createAsyncThunk(
 );
 
 
-
 export const fetchContacts = createAsyncThunk(
   'contacts/fetchAll',
   async (_, thunkAPI) => {
@@ -59,6 +66,8 @@ export const fetchContacts = createAsyncThunk(
     }
   }
 );
+
+
 
 export const addContact = createAsyncThunk(
   'contacts/addContact',
@@ -78,8 +87,18 @@ export const deleteContact = createAsyncThunk(
   'contacts/deleteContact',
   async (taskId, thunkAPI) => {
     try {
-      const response = await axios.delete(`/contacts/${taskId}`);
-      return response.data;
+      await axios.delete(`/contacts/${taskId}`);
+      const res = await axios.get('/contacts');
+      const state = thunkAPI.getState();
+      const selectedContact = state.contacts.contacts.selectedContact;
+      //const newContacts = res.data;
+      //console.log(newContacts);
+       //const exist = newContacts.find(contact => contact._id === taskId);
+    
+    if (selectedContact._id === taskId) {
+      thunkAPI.dispatch(closeModal());
+    }
+      return res.data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
     }

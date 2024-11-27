@@ -53,7 +53,6 @@ export const Home = () => {
             src={`http://localhost:8000${myUser.avatarURL}`}
             alt="User"
           />
-          {console.log(myUser.avatarURL)}
         </div>
         <input
           className={css.detailsImageButton}

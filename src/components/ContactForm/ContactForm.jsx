@@ -38,9 +38,24 @@ export const ContactForm = ({ children }) => {
       addContact({ name: event.target[0].value, phone: event.target[1].value })
     );
    
-    console.log({ name: event.target[0].value, phone: event.target[1].value });
+    //console.log({ name: event.target[0].value, phone: event.target[1].value });
      event.target.reset();
   };
+
+  const handleChange = (evt) => {
+    const wrd = evt.target.value
+    let hasExceeded = false;
+    let nameRay;
+    if (wrd.length > 15) {
+      nameRay = [...wrd];
+      nameRay.pop()
+      evt.target.value = nameRay.join("");
+      hasExceeded = true;
+    }
+    if ((hasExceeded === true)) {
+      alert('Maximum Charater limit is 15');
+    }
+  }
 
   return (
     <div className={css.phoneBook}>
@@ -58,6 +73,8 @@ export const ContactForm = ({ children }) => {
             autoComplete="off"
             id={contactNameId}
             className={css.formInput}
+          
+            onChange={handleChange}
           />
         </label>
         <label>

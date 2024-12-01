@@ -102,14 +102,6 @@ export const Home = () => {
               </span>
             </span>
           </li>
-          <li className={css.detailsItem}>
-            <span className={css.detailsCover}>
-              <span className={css.details}>Groups:-</span>{' '}
-              <span className={css.detailsVal}>
-                <i className={css.detail}>{myUser.groups.join(', ')}</i>
-              </span>
-            </span>
-          </li>
         </ul>
       </div>
     </div>

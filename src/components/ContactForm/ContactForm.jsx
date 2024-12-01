@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import { nanoid } from 'nanoid';
+import Notiflix from 'notiflix';
 
 export const ContactForm = ({ children }) => {
   const contactNameId = nanoid();
@@ -59,7 +60,7 @@ export const ContactForm = ({ children }) => {
       hasExceeded = true;
     }
     if ((hasExceeded === true)) {
-      alert('Maximum Charater limit is 15');
+      Notiflix.Notify.warning('Maximum Charater limit is 15');
     }
   }
 

@@ -47,12 +47,25 @@ export const Contacts = () => {
 
   const handleNameChange = evt => { 
     setNameValue(evt.target.value);
+      const wrd = evt.target.value;
+      let hasExceeded = false;
+      let nameRay;
+      if (wrd.length > 15) {
+        nameRay = [...wrd];
+        nameRay.pop();
+        evt.target.value = nameRay.join('');
+        hasExceeded = true;
+      }
+      if (hasExceeded === true) {
+        Notiflix.Notify.warning('Maximum Charater limit is 15');
+      }
     /*const id = evt.currentTarget.getAttribute('data-id');
     setIdValue(id);*/
   }
 
   const handleNameEdit = evt => { 
     setNameEdit(true);
+    setNameValue("");
     //const input = document.getElementById('nameInput');
     evt.target.style.boxShadow = 'inset 0 0 10px 5px rgba(0, 0, 0, 0.3)';
     setTimeout(() => {
@@ -68,7 +81,7 @@ export const Contacts = () => {
        dispatch(updateContactName({ name: nameValue, myUpdateId: idValue }));
        setNameEdit(false);
      } else if (nameValue.trim() === '') {
-       Notiflix.Notify.failure('Input is required');
+       Notiflix.Notify.warning('Input is required');
      }
      evt.target.style.boxShadow = 'inset 0 0 10px 5px rgba(0, 0, 0, 0.3)';
      setTimeout(() => {
@@ -88,6 +101,7 @@ export const Contacts = () => {
 
     const handleEmailEdit = evt => {
       setEmailEdit(true);
+       setEmailValue("");
       evt.target.style.boxShadow = 'inset 0 0 10px 5px rgba(0, 0, 0, 0.3)';
       setTimeout(() => {
         evt.target.style.boxShadow = 'none';
@@ -102,7 +116,7 @@ export const Contacts = () => {
        dispatch(updateContactEmail({ email: emailValue, myUpdateId: idValue }));
        setEmailEdit(false);
      } else if (emailValue.trim() === '') {
-       Notiflix.Notify.failure('Input is required');
+       Notiflix.Notify.warning('Input is required');
      }
      evt.target.style.boxShadow = 'inset 0 0 10px 5px rgba(0, 0, 0, 0.3)';
      setTimeout(() => {
@@ -122,6 +136,7 @@ export const Contacts = () => {
  
    const handlePhoneEdit = evt => {
      setPhoneEdit(true);
+     setPhoneValue('');
      evt.target.style.boxShadow = 'inset 0 0 10px 5px rgba(0, 0, 0, 0.3)';
      setTimeout(() => {
        evt.target.style.boxShadow = 'none';
@@ -136,7 +151,7 @@ export const Contacts = () => {
       dispatch(updateContactPhone({ phone: phoneValue, myUpdateId: idValue }));
       setPhoneEdit(false);
     } else if (phoneValue.trim() === '') {
-      Notiflix.Notify.failure('Input is required');
+      Notiflix.Notify.warning('Input is required');
     }
     evt.target.style.boxShadow = 'inset 0 0 10px 5px rgba(0, 0, 0, 0.3)';
     setTimeout(() => {

@@ -13,6 +13,8 @@ import {
   handleFilterBackwardDown,
   updateContactAvatar,
   updateContactName,
+  updateContactEmail,
+  updateContactPhone
 } from './operations';
 
 const handlePending = state => {
@@ -94,10 +96,9 @@ const contactsSlice = createSlice({
 
       .addCase(closeModal.fulfilled, (state, action) => {
         state.contacts.openMyModal = action.payload;
-         setTimeout(() => {
-           state.contacts.selectedContact = {};
-         }, 200);
-        
+        setTimeout(() => {
+          state.contacts.selectedContact = {};
+        }, 200);
       })
       /*.addCase(fetchContactById.fulfilled, (state, action) => {
         const myContact = myContacts.find(contact => {
@@ -139,7 +140,23 @@ const contactsSlice = createSlice({
         state.contacts.isLoading = false;
         //state.token = action.payload.token;
       })
-      .addCase(updateContactName.rejected, handleRejected);
+      .addCase(updateContactName.rejected, handleRejected)
+      .addCase(updateContactEmail.pending, handlePending)
+      .addCase(updateContactEmail.fulfilled, (state, action) => {
+        state.contacts.selectedContact.email = action.payload.newObj.email;
+        state.contacts.items = action.payload.newRay;
+        state.contacts.isLoading = false;
+        //state.token = action.payload.token;
+      })
+      .addCase(updateContactEmail.rejected, handleRejected)
+      .addCase(updateContactPhone.pending, handlePending)
+      .addCase(updateContactPhone.fulfilled, (state, action) => {
+        state.contacts.selectedContact.phone = action.payload.newObj.phone;
+        state.contacts.items = action.payload.newRay;
+        state.contacts.isLoading = false;
+        //state.token = action.payload.token;
+      })
+      .addCase(updateContactPhone.rejected, handleRejected);
   },
 });
 

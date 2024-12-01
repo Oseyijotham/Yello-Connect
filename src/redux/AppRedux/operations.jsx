@@ -123,12 +123,12 @@ export const updateContactEmail = createAsyncThunk(
 export const updateContactPhone = createAsyncThunk(
   'contacts/updateContactPhone',
   async ({ phone, myUpdateId }, thunkAPI) => {
-    Notiflix.Loading.pulse('Updating Your Email...', {
+    Notiflix.Loading.pulse('Updating Your Phone Number...', {
       svgColor: 'rgb(235, 144, 25)',
       fontFamily: 'DM Sans',
     });
     try {
-      const res = await axios.patch(`/contacts/emailupdate/${myUpdateId}`, {
+      const res = await axios.patch(`/contacts/phoneupdate/${myUpdateId}`, {
         phone,
       });
 

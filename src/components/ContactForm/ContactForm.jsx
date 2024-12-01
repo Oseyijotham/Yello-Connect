@@ -34,6 +34,12 @@ export const ContactForm = ({ children }) => {
       return;
     }
 
+    if (currentName.trim() === "") {
+      alert('Empty spaces are not allowed');
+
+      return;
+    }
+
     dispatch(
       addContact({ name: event.target[0].value, phone: event.target[1].value })
     );

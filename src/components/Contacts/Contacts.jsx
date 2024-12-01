@@ -2,7 +2,14 @@ import { ContactForm } from '../ContactForm/ContactForm';
 import { ContactList } from '../ContactList/ContactList';
 import { Filter } from '../Filter/Filter';
 import { useEffect } from 'react';
-import { fetchContacts, closeModal } from '../../redux/AppRedux/operations';
+import {
+  fetchContacts,
+  closeModal,
+  updateContactAvatar,
+  updateContactName,
+  updateContactEmail,
+  updateContactPhone,
+} from '../../redux/AppRedux/operations';
 import { useDispatch, useSelector } from 'react-redux';
 import clsx from 'clsx';
 import {
@@ -15,8 +22,17 @@ import {
 import css from './Contacts.module.css';
 import svg from './icons.svg';
 import { ThreeCircles } from 'react-loader-spinner';
+import { useState } from 'react';
+import Notiflix from 'notiflix';
 
 export const Contacts = () => {
+  const [isNameEditing, setNameEdit] = useState(false);
+  const [nameValue, setNameValue] = useState("");
+  const [isEmailEditing, setEmailEdit] = useState(false);
+  const [emailValue, setEmailValue] = useState('');
+   const [isPhoneEditing, setPhoneEdit] = useState(false);
+   const [phoneValue, setPhoneValue] = useState('');
+  //const [idValue, setIdValue] = useState('');
   const dispatch = useDispatch();
   const isLoading = useSelector(selectIsLoading);
   const isSlideLoading = useSelector(selectedIsSlideLoading);
@@ -25,7 +41,122 @@ export const Contacts = () => {
    const isOpenModal = useSelector(selectOpenModal);
  const handleModalClose = () => {
    dispatch(closeModal());
- };
+   setNameEdit(false);
+   setEmailEdit(false);
+  };
+
+  const handleNameChange = evt => { 
+    setNameValue(evt.target.value);
+    /*const id = evt.currentTarget.getAttribute('data-id');
+    setIdValue(id);*/
+  }
+
+  const handleNameEdit = evt => { 
+    setNameEdit(true);
+    //const input = document.getElementById('nameInput');
+    evt.target.style.boxShadow = 'inset 0 0 10px 5px rgba(0, 0, 0, 0.3)';
+    setTimeout(() => {
+      evt.target.style.boxShadow = 'none';
+      const input = document.querySelector('[name="username"]');
+      input.focus();
+    }, 100);
+  }
+
+   const handleNameSave = evt => {
+     if (nameValue.trim() != '') {
+       const idValue = evt.target.name;
+       dispatch(updateContactName({ name: nameValue, myUpdateId: idValue }));
+       setNameEdit(false);
+     } else if (nameValue.trim() === '') {
+       Notiflix.Notify.failure('Input is required');
+     }
+     evt.target.style.boxShadow = 'inset 0 0 10px 5px rgba(0, 0, 0, 0.3)';
+     setTimeout(() => {
+       evt.target.style.boxShadow = 'none';
+     }, 500);
+  };
+  
+   const handleNameEditClose = () => {
+     setNameEdit(false);
+   };
+
+    const handleEmailChange = evt => {
+      setEmailValue(evt.target.value);
+      /*const id = evt.currentTarget.getAttribute('data-id');
+    setIdValue(id);*/
+    };
+
+    const handleEmailEdit = evt => {
+      setEmailEdit(true);
+      evt.target.style.boxShadow = 'inset 0 0 10px 5px rgba(0, 0, 0, 0.3)';
+      setTimeout(() => {
+        evt.target.style.boxShadow = 'none';
+        const input = document.querySelector('[name="email"]');
+        input.focus();
+      }, 100);
+  };
+
+   const handleEmailSave = evt => {
+     if (emailValue.trim() != '') {
+       const idValue = evt.target.name;
+       dispatch(updateContactEmail({ email: emailValue, myUpdateId: idValue }));
+       setEmailEdit(false);
+     } else if (emailValue.trim() === '') {
+       Notiflix.Notify.failure('Input is required');
+     }
+     evt.target.style.boxShadow = 'inset 0 0 10px 5px rgba(0, 0, 0, 0.3)';
+     setTimeout(() => {
+       evt.target.style.boxShadow = 'none';
+     }, 500);
+   };
+
+  const handleEmailEditClose = () => {
+    setEmailEdit(false);
+  }
+
+  const handlePhoneChange = evt => {
+    setPhoneValue(evt.target.value);
+    /*const id = evt.currentTarget.getAttribute('data-id');
+    setIdValue(id);*/
+  };
+ 
+   const handlePhoneEdit = evt => {
+     setPhoneEdit(true);
+     evt.target.style.boxShadow = 'inset 0 0 10px 5px rgba(0, 0, 0, 0.3)';
+     setTimeout(() => {
+       evt.target.style.boxShadow = 'none';
+       const input = document.querySelector('[name="phone"]');
+       input.focus();
+     }, 100);
+   };
+  
+  const handlePhoneSave = evt => {
+    if (emailValue.trim() != '') {
+      const idValue = evt.target.name;
+      dispatch(updateContactPhone({ phone: phoneValue, myUpdateId: idValue }));
+      setPhoneEdit(false);
+    } else if (emailValue.trim() === '') {
+      Notiflix.Notify.failure('Input is required');
+    }
+    evt.target.style.boxShadow = 'inset 0 0 10px 5px rgba(0, 0, 0, 0.3)';
+    setTimeout(() => {
+      evt.target.style.boxShadow = 'none';
+    }, 500);
+  };
+ 
+  const handlePhoneEditClose = () => {
+    setPhoneEdit(false);
+  };
+  
+   const handleImageChange = e => {
+     const file = e.target.files[0];
+     const id = e.currentTarget.getAttribute('data-id');
+     //dispatch(updateAvatar({ avatar: file }));
+     //console.log({ avatar: file });
+     if (file) {
+       dispatch(updateContactAvatar({ myFile: file, myId: id })); // Store the file under the key "avatar"
+     }
+   };
 
   useEffect(() => {
     dispatch(fetchContacts());
@@ -71,8 +202,8 @@ export const Contacts = () => {
           <div className={css.detailsImageWrapper}>
             <img
               className={css.detailsImage}
-              src={`http://localhost:8000/avatars/Unknown.png`}
-              alt="User"
+              src={`http://localhost:8000${myContact.avatarURL}`}
+              alt="Contact"
             />
           </div>
           <input
@@ -80,7 +211,9 @@ export const Contacts = () => {
             type="file"
             accept="image/*"
             name="avatar"
+            onChange={handleImageChange}
             id="2"
+            data-id={myContact._id}
           />
           <label className={css.detailsImageInput} htmlFor="2">
             Update Picture +
@@ -88,41 +221,148 @@ export const Contacts = () => {
           <ul className={css.detailsWrapper}>
             <li className={css.detailsItem}>
               <span className={css.detailsCover}>
-                <span className={css.details}>First Name:-</span>{' '}
-                <span className={css.detailsVal}>
-                  <i className={css.detail}>{myContact.name}</i>
+                <span className={css.detailsInfo}>
+                  <span className={css.details}>Name:-</span>{' '}
+                  {isNameEditing === false ? (
+                    <span className={css.detailsVal}>
+                      <i className={css.detail}>{myContact.name}</i>
+                    </span>
+                  ) : (
+                    <input
+                      type="text"
+                      className={css.detailsValInput}
+                      required
+                      onChange={handleNameChange}
+                      data-id={myContact._id}
+                      name="username"
+                    />
+                  )}
+                </span>
+                <span className={css.buttonWrapper}>
+                  {isNameEditing === true && (
+                    <button
+                      className={css.detailsEditClose}
+                      onClick={handleNameEditClose}
+                    >
+                      <svg width="5px" height="5px" className={css.modalIcon}>
+                        <use href={`${svg}#icon-cross`}></use>
+                      </svg>
+                    </button>
+                  )}
+                  {isNameEditing === false ? (
+                    <button
+                      className={css.detailButton}
+                      onClick={handleNameEdit}
+                    >
+                      Edit
+                    </button>
+                  ) : (
+                    <button
+                      name={myContact._id}
+                      className={css.detailButton}
+                      onClick={handleNameSave}
+                    >
+                      Save
+                    </button>
+                  )}
                 </span>
               </span>
             </li>
             <li className={css.detailsItem}>
               <span className={css.detailsCover}>
-                <span className={css.details}>Last Name:-</span>{' '}
-                <span className={css.detailsVal}>
-                  <i className={css.detail}>{myContact.name}</i>
+                <span className={css.detailsInfo}>
+                  <span className={css.details}>Email:-</span>{' '}
+                  {isEmailEditing === false ? (
+                    <span className={css.detailsVal}>
+                      <i className={css.detail}>{myContact.email}</i>
+                    </span>
+                  ) : (
+                    <input
+                      type="text"
+                      className={css.detailsValInput}
+                      required
+                      onChange={handleEmailChange}
+                      data-id={myContact._id}
+                      name="email"
+                    />
+                  )}
+                </span>
+                <span className={css.buttonWrapper}>
+                  {isEmailEditing === true && (
+                    <button
+                      className={css.detailsEditClose}
+                      onClick={handleEmailEditClose}
+                    >
+                      <svg width="5px" height="5px" className={css.modalIcon}>
+                        <use href={`${svg}#icon-cross`}></use>
+                      </svg>
+                    </button>
+                  )}
+                  {isEmailEditing === false ? (
+                    <button
+                      className={css.detailButton}
+                      onClick={handleEmailEdit}
+                    >
+                      Edit
+                    </button>
+                  ) : (
+                    <button
+                      name={myContact._id}
+                      className={css.detailButton}
+                      onClick={handleEmailSave}
+                    >
+                      Save
+                    </button>
+                  )}
                 </span>
               </span>
             </li>
             <li className={css.detailsItem}>
               <span className={css.detailsCover}>
-                <span className={css.details}>Email:-</span>{' '}
-                <span className={css.detailsVal}>
-                  <i className={css.detail}>{myContact.name}</i>
+                <span className={css.detailsInfo}>
+                  <span className={css.details}>Phone Number:-</span>{' '}
+                  {isPhoneEditing === false ? (
+                    <span className={css.detailsValPhone}>
+                      <i className={css.detail}>{myContact.phone}</i>
+                    </span>
+                  ) : (
+                    <input
+                      type="text"
+                      className={css.detailsValInputPhone}
+                      required
+                      onChange={handlePhoneChange}
+                      data-id={myContact._id}
+                      name="phone"
+                    />
+                  )}
                 </span>
-              </span>
-            </li>
-            <li className={css.detailsItem}>
-              <span className={css.detailsCover}>
-                <span className={css.details}>Phone Number:-</span>{' '}
-                <span className={css.detailsVal}>
-                  <i className={css.detail}>{myContact.phone}</i>
-                </span>
-              </span>
-            </li>
-            <li className={css.detailsItem}>
-              <span className={css.detailsCover}>
-                <span className={css.details}>Groups:-</span>{' '}
-                <span className={css.detailsVal}>
-                  <i className={css.detail}>{myContact.name}</i>
+                <span className={css.buttonWrapper}>
+                  {isPhoneEditing === true && (
+                    <button
+                      className={css.detailsEditClose}
+                      onClick={handlePhoneEditClose}
+                    >
+                      <svg width="5px" height="5px" className={css.modalIcon}>
+                        <use href={`${svg}#icon-cross`}></use>
+                      </svg>
+                    </button>
+                  )}
+                  {isPhoneEditing === false ? (
+                    <button
+                      className={css.detailButton}
+                      onClick={handlePhoneEdit}
+                    >
+                      Edit
+                    </button>
+                  ) : (
+                    <button
+                      name={myContact._id}
+                      className={css.detailButton}
+                      onClick={handlePhoneSave}
+                    >
+                      Save
+                    </button>
+                  )}
                 </span>
               </span>
             </li>

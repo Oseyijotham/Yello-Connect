@@ -7,6 +7,12 @@ import {
   openModal,
   closeModal,
   fetchContactById,
+  handleFilterFowardUp,
+  handleFilterFowardDown,
+  handleFilterBackwardUp,
+  handleFilterBackwardDown,
+  updateContactAvatar,
+  updateContactName,
 } from './operations';
 
 const handlePending = state => {
@@ -38,9 +44,17 @@ const contactsSlice = createSlice({
       isKeyLoading: false,
       error: null,
       openMyModal: false,
-      selectedContact: {},
+      selectedContact: {
+        name: null,
+        email: null,
+        phone: null,
+        avatarURL: null,
+        groups: null,
+      },
       isSlideLoading: false,
-      isSlideError:false,
+      isSlideError: false,
+      filterUpLimit: 4,
+      filterDownLimit: 0,
     },
   },
   extraReducers: builder => {
@@ -80,7 +94,10 @@ const contactsSlice = createSlice({
 
       .addCase(closeModal.fulfilled, (state, action) => {
         state.contacts.openMyModal = action.payload;
-        state.contacts.selectedContact = {};
+         setTimeout(() => {
+           state.contacts.selectedContact = {};
+         }, 200);
+        
       })
       /*.addCase(fetchContactById.fulfilled, (state, action) => {
         const myContact = myContacts.find(contact => {
@@ -88,7 +105,7 @@ const contactsSlice = createSlice({
         });
         state.contacts.selectedContact = myContact;
       });*/
-      .addCase(fetchContactById.pending, (state) => {
+      .addCase(fetchContactById.pending, state => {
         state.contacts.isSlideLoading = true;
       })
       .addCase(fetchContactById.fulfilled, (state, action) => {
@@ -98,7 +115,31 @@ const contactsSlice = createSlice({
       .addCase(fetchContactById.rejected, (state, action) => {
         state.contacts.isSlideLoading = false;
         state.contacts.isSlideError = action.payload;
-      });
+      })
+      .addCase(handleFilterFowardUp.fulfilled, (state, action) => {
+        state.contacts.filterUpLimit = action.payload;
+      })
+      .addCase(handleFilterFowardDown.fulfilled, (state, action) => {
+        state.contacts.filterDownLimit = action.payload;
+      })
+      .addCase(handleFilterBackwardUp.fulfilled, (state, action) => {
+        state.contacts.filterUpLimit = action.payload;
+      })
+      .addCase(handleFilterBackwardDown.fulfilled, (state, action) => {
+        state.contacts.filterDownLimit = action.payload;
+      })
+      .addCase(updateContactAvatar.fulfilled, (state, action) => {
+        state.contacts.selectedContact.avatarURL = action.payload.avatarURL;
+        //state.token = action.payload.token;
+      })
+      .addCase(updateContactName.pending, handlePending)
+      .addCase(updateContactName.fulfilled, (state, action) => {
+        state.contacts.selectedContact.name = action.payload.newObj.name;
+        state.contacts.items = action.payload.newRay;
+        state.contacts.isLoading = false;
+        //state.token = action.payload.token;
+      })
+      .addCase(updateContactName.rejected, handleRejected);
   },
 });
 

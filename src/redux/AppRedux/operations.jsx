@@ -9,15 +9,142 @@ export const openModal = createAsyncThunk('modal/open', async (_, thunkAPI) => {
 export const closeModal = createAsyncThunk(
   'modal/close',
   async (_, thunkAPI) => {
-    console.log("Now");
+    //console.log("Now");
     return false;
   }
 );
 
-export const clearModal = createAsyncThunk(
-  'modal/clear',
-  async (_, thunkAPI) => {
-    return false;
+export const handleFilterFowardUp = createAsyncThunk(
+  'filter/fowardUp',
+  async (val, thunkAPI) => {
+    return val + 4;
+  }
+);
+
+export const handleFilterFowardDown = createAsyncThunk(
+  'filter/fowardDown',
+  async (val, thunkAPI) => {
+    return val + 4;
+  }
+);
+
+
+export const handleFilterBackwardUp = createAsyncThunk(
+  'filter/backwardUp',
+  async (val, thunkAPI) => {
+    return val - 4;
+  }
+);
+
+export const handleFilterBackwardDown = createAsyncThunk(
+  'filter/backwardDown',
+  async (val, thunkAPI) => {
+    return val - 4;
+  }
+);
+
+export const updateContactAvatar = createAsyncThunk(
+  'contacts/updateContactAvatar',
+  async ({myFile, myId}, thunkAPI) => {
+    Notiflix.Loading.pulse('Updating Your Picture...', {
+      svgColor: 'rgb(235, 144, 25)',
+      fontFamily: 'DM Sans',
+    });
+    try {
+      const res = await axios.patch(`/contacts/avatars/${myId}`, { avatar: myFile }, {headers: { 'Content-Type': 'multipart/form-data' }});
+
+      Notiflix.Loading.remove();
+      return res.data;
+    } catch (error) {
+      alert('Incorrect Input');
+      Notiflix.Loading.remove();
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const updateContactName = createAsyncThunk(
+  'contacts/updateContactName',
+  async ({ name, myUpdateId}, thunkAPI) => {
+    Notiflix.Loading.pulse('Updating Your Name...', {
+      svgColor: 'rgb(235, 144, 25)',
+      fontFamily: 'DM Sans',
+    });
+    try {
+      const res = await axios.patch(`/contacts/nameupdate/${myUpdateId}`, {
+        name
+      });
+
+      const response = await axios.get('/contacts');
+
+
+      Notiflix.Loading.remove();
+      //return res.data;
+      return {
+        newObj: res.data,
+        newRay: response.data
+      };
+    } catch (error) {
+      alert('Incorrect Input');
+      Notiflix.Loading.remove();
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const updateContactEmail = createAsyncThunk(
+  'contacts/updateContactEmail',
+  async ({ email, myUpdateId }, thunkAPI) => {
+    Notiflix.Loading.pulse('Updating Your Email...', {
+      svgColor: 'rgb(235, 144, 25)',
+      fontFamily: 'DM Sans',
+    });
+    try {
+      const res = await axios.patch(`/contacts/emailupdate/${myUpdateId}`, {
+        email,
+      });
+
+      const response = await axios.get('/contacts');
+
+      Notiflix.Loading.remove();
+      //return res.data;
+      return {
+        newObj: res.data,
+        newRay: response.data,
+      };
+    } catch (error) {
+      alert('Incorrect Input');
+      Notiflix.Loading.remove();
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const updateContactPhone = createAsyncThunk(
+  'contacts/updateContactPhone',
+  async ({ phone, myUpdateId }, thunkAPI) => {
+    Notiflix.Loading.pulse('Updating Your Email...', {
+      svgColor: 'rgb(235, 144, 25)',
+      fontFamily: 'DM Sans',
+    });
+    try {
+      const res = await axios.patch(`/contacts/emailupdate/${myUpdateId}`, {
+        phone,
+      });
+
+      const response = await axios.get('/contacts');
+
+      Notiflix.Loading.remove();
+      //return res.data;
+      return {
+        newObj: res.data,
+        newRay: response.data,
+      };
+    } catch (error) {
+      alert('Incorrect Input');
+      Notiflix.Loading.remove();
+      return thunkAPI.rejectWithValue(error.message);
+    }
   }
 );
 

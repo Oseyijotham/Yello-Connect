@@ -110,8 +110,8 @@
   );
   background-image: linear-gradient(#f1dbba, rgb(235, 144, 25));
 position: absolute;
-    bottom: 2%;
-    width: 415px;
+    bottom: 5%;
+    width: 432px;
     border-radius: 30px;
     padding: 10px;
     transform: translateX(0%);
@@ -250,12 +250,19 @@ border: 1px solid #fff;
 .detailsCover{
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap:10px;
  background-color: rgb(240, 164, 65);
  border-radius: 30px;
- padding: 5px;
+ padding: 10px;
  border: 1px solid #fff;
  
+}
+
+.detailsInfo{
+  display: flex;
+  align-items: center;
+  gap:3px;
 }
 
 .details{
@@ -269,6 +276,45 @@ border: 1px solid #fff;
   background-color:#f1dbba;
   border: 1px solid #fff;
   box-shadow: inset 0 0 10px 5px rgba(0, 0, 0, 0.3);
+  max-width: 230px;
+  overflow: hidden;
+}
+
+.detailsValPhone{
+  padding: 5px;
+  border-radius: 30px;
+  background-color:#f1dbba;
+  border: 1px solid #fff;
+  box-shadow: inset 0 0 10px 5px rgba(0, 0, 0, 0.3);
+  max-width: 140px;
+  overflow: hidden;
+}
+
+.detailsValInput{
+  padding: 5px;
+  border-radius: 30px;
+  background-color:#f1dbba;
+  border: 1px solid #fff;
+  box-shadow: inset 0 0 10px 5px rgba(0, 0, 0, 0.3);
+  font-size: 16px;
+  height: 33px;
+  color: rgb(114, 17, 17);
+  font-family: 'DM Sans';
+  font-weight: 700;
+}
+
+.detailsValInputPhone{
+  padding: 5px;
+  border-radius: 30px;
+  background-color:#f1dbba;
+  border: 1px solid #fff;
+  box-shadow: inset 0 0 10px 5px rgba(0, 0, 0, 0.3);
+  font-size: 16px;
+  height: 33px;
+  color: rgb(114, 17, 17);
+  font-family: 'DM Sans';
+  font-weight: 700;
+  max-width: 140px;
 }
 
 
@@ -293,4 +339,39 @@ border: 1px solid #fff;
 }
 
 
+.detailButton{
+    padding: 3px;
+    border-radius: 10px;
+    text-align: center;
+    font-family: 'DM Sans';
+    font-weight: 700;
+    cursor: pointer;
+    border: none;
+    color: rgb(114, 17, 17);
+    background-color: #f1dbba;
+    border: 1px solid #fff;
+}
 
+.detailButton:hover{
+color: #fff;
+background-color: rgb(240, 164, 65);
+}
+
+.buttonWrapper{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+
+.detailsEditClose{
+  border-radius: 50%;
+  cursor: pointer;
+  padding: 4px;
+  background-color: rgb(235, 144, 25);
+  fill: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #f1dbba;
+}

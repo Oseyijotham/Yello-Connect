@@ -51,7 +51,11 @@
   border: 2px solid #fff;
   padding: 5px;
   border-radius: 30px;
-  
+  max-width: 120px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .contactsItemWrapper{
@@ -112,4 +116,24 @@
 .contactsButton:hover{
 color: #fff;
 background-color: rgb(240, 164, 65);
+}
+
+.navigationArea{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap:5px;
+}
+
+.navigationButton{
+    padding: 8px; 
+    border: none;
+    border-radius: 30px;
+    text-align: center;
+    color: rgb(114, 17, 17);
+    font-family: 'DM Sans';
+    font-weight: 700;
+    cursor: pointer;
+    background-color: #f1dbba;
+    filter: drop-shadow(0px 8px 8px rgba(0, 0, 0, 0.3));
 }

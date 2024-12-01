@@ -15,3 +15,7 @@ export const selectedContact = state => state.contacts.contacts.selectedContact;
 export const selectedIsSlideLoading = state => state.contacts.contacts.isSlideLoading;
 
 export const selectedIsSlideError = state => state.contacts.contacts.isSlideError;
+
+export const selectFilterUp = state => state.contacts.contacts.filterUpLimit;
+
+export const selectFilterDown = state => state.contacts.contacts.filterDownLimit;

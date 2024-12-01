@@ -105,6 +105,26 @@ export const refreshUser = createAsyncThunk(
   }
 );
 
+export const getUser = createAsyncThunk(
+  'auth/get',
+  async (_, thunkAPI) => {
+    const state = thunkAPI.getState();
+    const persistedToken = state.auth.token;
+
+    if (persistedToken === null) {
+      return thunkAPI.rejectWithValue('Unable to fetch user');
+    }
+
+    try {
+      setAuthHeader(persistedToken);
+      const res = await axios.get('/users/current');
+      return res.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
 export const updateAvatar = createAsyncThunk(
   'auth/updateAvatar',
   async (file, thunkAPI) => {
@@ -116,6 +136,7 @@ export const updateAvatar = createAsyncThunk(
       const res = await axios.patch('/users/avatars', file, { headers: { 'Content-Type': 'multipart/form-data' } });
 
       Notiflix.Loading.remove();
+      console.log(res)
       return res.data;
     } catch (error) {
       alert(

@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
   selectError,
   selectIsLoading,
+  selectedContact,
 } from '../../redux/AppRedux/selectors';
 import { selectUser } from '../../redux/AuthRedux/selectors';
 import { updateAvatar } from '../../redux/AuthRedux/operations';
@@ -15,17 +16,20 @@ export const Home = () => {
   const isLoading = useSelector(selectIsLoading);
   const error = useSelector(selectError);
   const myUser = useSelector(selectUser);
-   const handleImageChange = e => {
-     const file = e.target.files[0];
-     //dispatch(updateAvatar({ avatar: file }));
-     console.log({ avatar: file });
-     if (file) {
-       dispatch(updateAvatar({ avatar: file })); // Store the file under the key "avatar"
-     }
-   };
+  const myContact = useSelector(selectedContact);
+  const handleImageChange = e => {
+    //console.log("gbyghnu")
+    const file = e.target.files[0];
+    //dispatch(updateAvatar({ avatar: file }));
+    console.log({ avatar: file });
+    if (file) {
+      dispatch(updateAvatar({ avatar: file })); // Store the file under the key "avatar"
+    }
+  };
 
-
-  useEffect(() => {}, [dispatch]);
+  useEffect(() => {
+    //dispatch(getUser());
+  }, [myContact, dispatch]);
   return (
     <div className={css.homeDisplay}>
       <div>
@@ -110,6 +114,5 @@ export const Home = () => {
       </div>
     </div>
   );
-    
 };
 export default Home;

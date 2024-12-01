@@ -5,7 +5,7 @@ import { SharedLayout } from '../SharedLayout/SharedLayout';
 import { PrivateRoute } from '../PrivateRoute/PrivateRoute';
 import { RestrictedRouteRegister } from '../RestrictedRouteRegister/RestrictedRouteRegister';
 import { RestrictedRouteLogin } from '../RestrictedRouteLogin/RestrictedRouteLogin';
-import { refreshUser } from '../../redux/AuthRedux/operations';
+import { refreshUser, getUser } from '../../redux/AuthRedux/operations';
 import { useDispatch } from 'react-redux';
 import { useAuthHook } from '../../customHook/customHook'
 
@@ -23,6 +23,7 @@ export const App = () => {
 
     useEffect(() => {
       dispatch(refreshUser());
+      dispatch(getUser());
     }, [dispatch]);
   return isRefreshing ? (
     <b>Refreshing user...</b>

@@ -28,13 +28,13 @@
 .contactsList {
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 10px;
   margin-top: 10px;
   list-style: circle;
       background-color: #f1dbba;
     border: 2px solid #fff;
     border-radius: 4px;
-    padding: 6px;
+    padding: 10px;
 }
 
 .contactsData{
@@ -46,6 +46,20 @@
     color: rgb(114, 17, 17);
 }
 
+.contactsData{
+    background-color: #f1dbba;
+    border: 1px solid #fff;
+    border-radius: 30px;
+    padding: 8px;
+    font-weight: 700;
+    color: rgb(114, 17, 17);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+    box-shadow: inset 0 0 10px 5px rgba(0, 0, 0, 0.3);
+}
+
 .contactsItem {
   display: flex;
   justify-content: space-between;
@@ -54,4 +68,54 @@
     border: 1px solid #fff;
     border-radius: 4px;
     padding: 5px;
+    cursor: pointer;
+      transform: translateY(0); /* No elevation initially */
+  box-shadow: none; /* No shadow initially */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; 
+}
+
+.contactsItem:hover{
+  cursor: pointer;
+  transform: translateY(-5px); /* Slight elevation */
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3); /* Shadow underneath */
+  background-color: rgb(240, 164, 65);
+}
+
+.contactsPhone{
+  color: #fff;
+  background-color: rgb(235, 144, 25);
+  border: 2px solid #fff;
+  padding: 5px;
+  border-radius: 30px;
+  width: 120px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.contactsButtonArea{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap:5px;
+}
+
+.contactsButton{
+    padding: 3px;
+  border-radius: 10px;
+  text-align: center;
+  font-family: 'DM Sans';
+  font-weight: 700;
+  cursor: pointer;
+    border: none;
+    color: rgb(114, 17, 17);
+    background-color: #f1dbba;
+    border: 1px solid #fff;
+}
+
+.contactsButton:hover{
+color: #fff;
+background-color: rgb(240, 164, 65);
 }

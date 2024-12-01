@@ -131,11 +131,11 @@ export const Contacts = () => {
    };
   
   const handlePhoneSave = evt => {
-    if (emailValue.trim() != '') {
+    if (phoneValue.trim() != '') {
       const idValue = evt.target.name;
       dispatch(updateContactPhone({ phone: phoneValue, myUpdateId: idValue }));
       setPhoneEdit(false);
-    } else if (emailValue.trim() === '') {
+    } else if (phoneValue.trim() === '') {
       Notiflix.Notify.failure('Input is required');
     }
     evt.target.style.boxShadow = 'inset 0 0 10px 5px rgba(0, 0, 0, 0.3)';

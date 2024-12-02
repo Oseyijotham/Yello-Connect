@@ -76,7 +76,7 @@ export const Contacts = () => {
   }
 
    const handleNameSave = evt => {
-     if (nameValue.trim() != '') {
+     if (nameValue.trim() !== '') {
        const idValue = evt.target.name;
        dispatch(updateContactName({ name: nameValue, myUpdateId: idValue }));
        setNameEdit(false);
@@ -111,7 +111,7 @@ export const Contacts = () => {
   };
 
    const handleEmailSave = evt => {
-     if (emailValue.trim() != '') {
+     if (emailValue.trim() !== '') {
        const idValue = evt.target.name;
        dispatch(updateContactEmail({ email: emailValue, myUpdateId: idValue }));
        setEmailEdit(false);
@@ -146,12 +146,12 @@ export const Contacts = () => {
    };
   
   const handlePhoneSave = evt => {
-    if (phoneValue.trim() != '') {
+    if (phoneValue.trim() !== '') {
       const idValue = evt.target.name;
       dispatch(updateContactPhone({ phone: phoneValue, myUpdateId: idValue }));
       setPhoneEdit(false);
     } else if (phoneValue.trim() === '') {
-      Notiflix.Notify.warning('Input is required');
+      Notiflix.Notify.warning('Input is Empty or Incorrect');
     }
     evt.target.style.boxShadow = 'inset 0 0 10px 5px rgba(0, 0, 0, 0.3)';
     setTimeout(() => {
@@ -342,7 +342,7 @@ export const Contacts = () => {
                     </span>
                   ) : (
                     <input
-                      type="text"
+                      type="number"
                       className={css.detailsValInputPhone}
                       required
                       onChange={handlePhoneChange}

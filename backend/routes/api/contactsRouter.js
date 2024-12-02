@@ -1,30 +1,31 @@
 import express from "express";
 import { ctrlWrapper } from "../../helpers/ctrlWrapper.js";
 // prettier-ignore
-import {
-  addContact,
-  deleteContactById,
-  getAllContacts,
-  retrieveKey,
-  createAPIkey,
-} from '../../controllers/contactsController.js';
+import { addContact, deleteContactById, getAllContacts, getContactById, updateContactAvatar, updateContactNameById, updateContactEmailById, updateContactPhoneById } from "../../controllers/contactsController.js";
 import { authenticateToken } from "../../middlewares/authenticateToken.js";
-import { contactsKey } from '../../middlewares/contactsKey.js';
+import { upload } from "../../middlewares/upload.js";
 
 const router = express.Router();
 
-     
-router.get("/", authenticateToken, ctrlWrapper(getAllContacts));            
 
-router.post('/key', authenticateToken, createAPIkey);
+router.get("/", authenticateToken, ctrlWrapper(getAllContacts));
 
-router.get('/retrieve', authenticateToken, ctrlWrapper(retrieveKey));
+router.get("/:contactId", authenticateToken, ctrlWrapper(getContactById));
 
-router.post("/:apiKey", contactsKey, ctrlWrapper(addContact)); /*The contactsKey function validates the API Key sent from the Frontend,
-if the API Key is valid access is granted to the addContact function*/
+router.post("/", authenticateToken, ctrlWrapper(addContact));
 
-router.delete('/:contactId/:apiKey',contactsKey,ctrlWrapper(deleteContactById)); /*The contactsKey function validates the API Key sent from the Frontend,
-if the API Key is valid access is granted to the deleteContactById function*/
+router.delete("/:contactId", authenticateToken, ctrlWrapper(deleteContactById));
+
+router.patch("/avatars/:contactId", authenticateToken, upload.single("avatar"), ctrlWrapper(updateContactAvatar));
+
+
+router.patch("/nameupdate/:contactId", authenticateToken, ctrlWrapper(updateContactNameById));
+
+
+router.patch("/emailupdate/:contactId", authenticateToken, ctrlWrapper(updateContactEmailById));
+
+
+router.patch("/phoneupdate/:contactId", authenticateToken, ctrlWrapper(updateContactPhoneById));
 
 
 

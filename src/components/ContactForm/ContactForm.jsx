@@ -80,14 +80,13 @@ export const ContactForm = ({ children }) => {
             autoComplete="off"
             id={contactNameId}
             className={css.formInput}
-          
             onChange={handleChange}
           />
         </label>
         <label>
           <span className={css.formLabel}>Number:</span>
           <input
-            type="tel"
+            type="number"
             placeholder="Enter Number"
             autoComplete="off"
             name="number"

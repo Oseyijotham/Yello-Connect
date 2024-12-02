@@ -17,7 +17,7 @@ export const register = createAsyncThunk(
   'auth/register',
   async ({ firstName, lastName, email, phone, password }, thunkAPI) => {
     Notiflix.Loading.pulse('Registering Your Account...', {
-      svgColor: '#FFB8CA',
+      svgColor: 'rgb(235, 144, 25)',
       fontFamily: 'DM Sans',
     });
     try {
@@ -32,7 +32,7 @@ export const register = createAsyncThunk(
       Notiflix.Loading.remove();
       return res.data;
     } catch (error) {
-      alert(
+      Notiflix.Notify.failure(
         'Incorrect email or password format, or email has already been registered'
       );
       Notiflix.Loading.remove();
@@ -54,10 +54,10 @@ export const logIn = createAsyncThunk(
       
       setAuthHeader(res.data.token);
       Notiflix.Loading.remove();
-      console.log(res.data);
+      //console.log(res.data);
       return res.data;
     } catch (error) {
-      alert('Incorrect email or password');
+      Notiflix.Notify.failure('Incorrect email or password');
       Notiflix.Loading.remove();
       return thunkAPI.rejectWithValue(error.message);
     }
@@ -67,7 +67,7 @@ export const logIn = createAsyncThunk(
 
 export const logOut = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
     Notiflix.Loading.pulse('Logging You Out...', {
-      svgColor: '#FFB8CA',
+      svgColor: 'rgb(235, 144, 25)',
       fontFamily: 'DM Sans',
     });
   try {
@@ -129,7 +129,7 @@ export const updateAvatar = createAsyncThunk(
   'auth/updateAvatar',
   async (file, thunkAPI) => {
     Notiflix.Loading.pulse('Updating Your Picture...', {
-      svgColor: '#FFB8CA',
+      svgColor: 'rgb(235, 144, 25)',
       fontFamily: 'DM Sans',
     });
     try {

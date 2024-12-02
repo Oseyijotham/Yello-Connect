@@ -17,7 +17,6 @@ const authenticateToken = async (req, _res, next) => {
     const user = await User.findById(id);
 
     if (!user || user.token !== token || !user.token) {
-      //window.location.reload();
       next(httpError(401, "Not authorized"));
     }
 

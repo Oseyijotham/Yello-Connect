@@ -2,44 +2,47 @@ import { Schema, model } from "mongoose";
 
 const userSchema = new Schema(
   {
-    name: {
+    firstname: {
       type: String,
-      required: [true, 'Name is required'],
+      required: [true, "firstname is required"],
+    },
+    lastname: {
+      type: String,
+      required: [true, "lastname is required"],
     },
     password: {
       type: String,
-      required: [true, 'Password is required'],
+      required: [true, "Password is required"],
     },
     email: {
       type: String,
-      required: [true, 'Email is required'],
+      required: [true, "Email is required"],
       unique: true,
     },
-    subscription: {
+    phone: {
       type: String,
-      enum: ['starter', 'pro', 'business'],
-      default: 'starter',
+      required: [true, "Set phone for User"],
+    },
+    avatarURL: {
+      type: String,
+      default: "/avatars/Unknown.png",
     },
     token: {
       type: String,
       default: null,
     },
-    apiKey: {
-      type: String,
-      default: null,
+    verify: {
+      type: Boolean,
+      default: false,
     },
-    apiKeyName: {
-      type: String,
-      default: null,
+    groups: {
+      type: Array,
+      default: ["favourites"],
     },
-    apiAccountId: {
+    /*verificationToken: {
       type: String,
-      default: null,
-    },
-    apiCreationDate: {
-      type: String,
-      default: null,
-    },
+      required: [true, "Verify token is required"],
+    },*/
   },
   { versionKey: false }
 );

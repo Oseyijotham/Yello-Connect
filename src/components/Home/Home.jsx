@@ -97,7 +97,7 @@ export const Home = () => {
           <li className={css.detailsItem}>
             <span className={css.detailsCover}>
               <span className={css.details}>Phone Number:-</span>{' '}
-              <span className={css.detailsVal}>
+              <span className={css.detailsValPhone}>
                 <i className={css.detail}>{myUser.phone}</i>
               </span>
             </span>

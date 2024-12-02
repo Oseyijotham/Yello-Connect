@@ -2,12 +2,28 @@ import { useDispatch } from 'react-redux';
 import { register } from '../../redux/AuthRedux/operations';
 import css from './Register.module.css';
 import logoImage from './call.png';
+import Notiflix from 'notiflix';
 //import { useAuthHook } from '../../customHook/customHook';
 //import { useEffect } from 'react';
 
 export const Register = () => {
 const dispatch = useDispatch();
 //const { token, user } = useAuthHook();
+
+  const handleChange = (evt) => {
+   const wrd = evt.target.value;
+   let hasExceeded = false;
+   let nameRay;
+   if (wrd.length > 16) {
+     nameRay = [...wrd];
+     nameRay.pop();
+     evt.target.value = nameRay.join('');
+     hasExceeded = true;
+   }
+   if (hasExceeded === true) {
+     Notiflix.Notify.warning('Maximum Charater limit is 16');
+   }
+}
 
 const handleSubmit = e => {
   e.preventDefault();
@@ -17,6 +33,27 @@ const handleSubmit = e => {
     e.target.elements.button.style.boxShadow = 'none';
   }, 1000);
   const form = e.currentTarget;
+  if (form.elements.firstname.value.trim() === '') {
+    Notiflix.Notify.warning('Empty spaces are NOT allowed');
+    return;
+  }
+  if (form.elements.lastname.value.trim() === '') {
+    Notiflix.Notify.warning('Empty spaces are NOT allowed');
+    return;
+  }
+  if (form.elements.firstname.value.trim() === '') {
+    Notiflix.Notify.warning('Empty spaces are NOT allowed');
+    return;
+  }
+  if (form.elements.email.value.trim() === '') {
+    Notiflix.Notify.warning('Empty spaces are NOT allowed');
+    return;
+  }
+  if (form.elements.password.value.length < 6) {
+    Notiflix.Notify.warning('Password Must be more than 6 characters');
+    return;
+  }
+  
   dispatch(
     register({
       firstName: form.elements.firstname.value,
@@ -106,6 +143,7 @@ const handleSubmit = e => {
                   placeholder="Minimum of Six Characters, Max 16"
                   autoComplete="off"
                   required
+                  onChange={handleChange}
                 />
               </label>
               <button className={css.inputButton} name="button">

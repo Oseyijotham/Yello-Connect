@@ -41,7 +41,8 @@ export const Greeting = styled.div`
   font-family: 'Sansita Swashed';
   font-size: 25px;
   color: #fff;
-
+  max-width:330px;
+  overflow:hidden;
   margin: 2px;
   display: inline-block;
   font-weight: 700;

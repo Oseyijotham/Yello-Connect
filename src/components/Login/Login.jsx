@@ -2,7 +2,7 @@ import { useDispatch } from 'react-redux';
 import { logIn } from '../../redux/AuthRedux/operations';
 import css from './Login.module.css';
 import logoImage from './call.png';
-
+import Notiflix from 'notiflix';
 import { NavLink } from 'react-router-dom';
 import { useAuthHook } from '../../customHook/customHook';
 
@@ -17,6 +17,21 @@ export const Login = () => {
     }, 2000);
   }
 
+  const handleChange = (evt) => {
+    const wrd = evt.target.value;
+    let hasExceeded = false;
+    let nameRay;
+    if (wrd.length > 16) {
+      nameRay = [...wrd];
+      nameRay.pop();
+      evt.target.value = nameRay.join('');
+      hasExceeded = true;
+    }
+    if (hasExceeded === true) {
+      Notiflix.Notify.warning('Maximum Charater limit is 16');
+    }
+  }
+
   const handleSubmit = e => {
     e.preventDefault();
      e.target.elements.button.style.boxShadow = 'inset 0 0 10px 5px rgba(0, 0, 0, 0.3)';
@@ -24,12 +39,16 @@ export const Login = () => {
      e.target.elements.button.style.boxShadow = 'none';
      }, 2000);
     const form = e.currentTarget;
-    dispatch(
-      logIn({
-        email: form.elements.email.value,
-        password: form.elements.password.value,
-      })
-    );
+    if (form.elements.password.value.length < 6) {
+      Notiflix.Notify.warning('Password Must be more than 6 characters');
+      return;
+    }
+      dispatch(
+        logIn({
+          email: form.elements.email.value,
+          password: form.elements.password.value,
+        })
+      );
     //form.reset();
   };
 
@@ -70,6 +89,7 @@ export const Login = () => {
                     name="password"
                     className={css.input}
                     required
+                    onChange={handleChange}
                   />
                 </label>
                 <button

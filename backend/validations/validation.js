@@ -1,5 +1,21 @@
 import Joi from "joi";
 
+// validation for updating a contacts name
+const updateNameValidation = Joi.object({
+  name: Joi.string().required()
+});
+
+// validation for updating a contacts email
+const updateEmailValidation = Joi.object({
+  email: Joi.string()
+    .email({ minDomainSegments: 2, tlds: { allow: ["com", "net"] } })
+    .required()
+    .messages({
+      "any.required": "Missing required email field",
+      "string.email": "Invalid email format",
+    }),
+});
+
 // validation for adding/updating a contact
 const contactValidation = Joi.object({
   name: Joi.string().required(),
@@ -13,7 +29,8 @@ const favoriteValidation = Joi.object({
 
 // validation for signup
 const signupValidation = Joi.object({
-  name: Joi.string().required(),
+  firstName: Joi.string().required(),
+  lastName: Joi.string().required(),
   email: Joi.string()
     .email({ minDomainSegments: 2, tlds: { allow: ["com", "net"] } })
     .required()
@@ -21,6 +38,7 @@ const signupValidation = Joi.object({
       "any.required": "Missing required email field",
       "string.email": "Invalid email format",
     }),
+  phone: Joi.string().required(),
   password: Joi.string().min(6).max(16).required().messages({
     "any.required": "Missing required password field",
     "string.min": "Password must be at least {#limit} characters long",
@@ -28,7 +46,7 @@ const signupValidation = Joi.object({
   }),
 });
 
-// validation for login
+// validation for signup
 const loginValidation = Joi.object({
   email: Joi.string()
     .email({ minDomainSegments: 2, tlds: { allow: ["com", "net"] } })
@@ -44,9 +62,14 @@ const loginValidation = Joi.object({
   }),
 });
 
-const subscriptionValidation = Joi.object({
-  subscription: Joi.string().valid("starter", "pro", "business"),
-});
+
 
 // prettier-ignore
-export { contactValidation, favoriteValidation, signupValidation, loginValidation, subscriptionValidation };
+export {
+  updateNameValidation,
+  updateEmailValidation,
+  contactValidation,
+  favoriteValidation,
+  signupValidation,
+  loginValidation
+};

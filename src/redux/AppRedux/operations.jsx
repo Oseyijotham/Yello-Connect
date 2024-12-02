@@ -56,7 +56,7 @@ export const updateContactAvatar = createAsyncThunk(
       Notiflix.Loading.remove();
       return res.data;
     } catch (error) {
-      alert('Incorrect Input');
+      Notiflix.Notify.failure('Incorrect Input Format');
       Notiflix.Loading.remove();
       return thunkAPI.rejectWithValue(error.message);
     }
@@ -85,7 +85,9 @@ export const updateContactName = createAsyncThunk(
         newRay: response.data
       };
     } catch (error) {
-      alert('Incorrect Input');
+      Notiflix.Notify.failure(
+        'Incorrect Input Format'
+      );
       Notiflix.Loading.remove();
       return thunkAPI.rejectWithValue(error.message);
     }
@@ -113,7 +115,7 @@ export const updateContactEmail = createAsyncThunk(
         newRay: response.data,
       };
     } catch (error) {
-      alert('Incorrect Input');
+      Notiflix.Notify.failure('Incorrect Input Format');
       Notiflix.Loading.remove();
       return thunkAPI.rejectWithValue(error.message);
     }
@@ -141,7 +143,7 @@ export const updateContactPhone = createAsyncThunk(
         newRay: response.data,
       };
     } catch (error) {
-      alert('Incorrect Input');
+      Notiflix.Notify.failure('Incorrect Input Format');
       Notiflix.Loading.remove();
       return thunkAPI.rejectWithValue(error.message);
     }
@@ -161,24 +163,6 @@ export const fetchContactById = createAsyncThunk(
   }
 );
 
-export const retrieveApiKey = createAsyncThunk(
-  'contacts/retrieveKey',
-  async (_, thunkAPI) => {
-    Notiflix.Loading.pulse('Loading data, please wait...', {
-      svgColor: '#FFB8CA',
-      fontFamily: 'DM Sans',
-    });
-    try {
-      const res = await axios.get('/contacts/retrieve');
-      //console.log(res.data);
-      Notiflix.Loading.remove();
-      return res.data;
-    } catch (error) {
-      Notiflix.Loading.remove();
-      return thunkAPI.rejectWithValue(error.message);
-    }
-  }
-);
 
 
 export const fetchContacts = createAsyncThunk(

@@ -18,6 +18,7 @@ import {
   selectOpenModal,
   selectedContact,
   selectedIsSlideLoading,
+  selectContacts,
 } from '../../redux/AppRedux/selectors';
 import css from './Contacts.module.css';
 import svg from './icons.svg';
@@ -35,6 +36,7 @@ export const Contacts = () => {
   //const [idValue, setIdValue] = useState('');
   const dispatch = useDispatch();
   const isLoading = useSelector(selectIsLoading);
+  const contacts = useSelector(selectContacts);
   const isSlideLoading = useSelector(selectedIsSlideLoading);
   const myContact = useSelector(selectedContact);
   const error = useSelector(selectError);
@@ -75,7 +77,15 @@ export const Contacts = () => {
     }, 100);
   }
 
-   const handleNameSave = evt => {
+  const handleNameSave = evt => {
+     const isNameDuplicate = contacts.some(
+       contact =>
+         contact.name.trim().toLowerCase() === nameValue.trim().toLowerCase()
+     );
+     if (isNameDuplicate) {
+       Notiflix.Notify.warning('This name already exists');
+       return;
+     }
      if (nameValue.trim() !== '') {
        const idValue = evt.target.name;
        dispatch(updateContactName({ name: nameValue, myUpdateId: idValue }));

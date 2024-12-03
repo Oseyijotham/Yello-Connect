@@ -54,7 +54,7 @@ export const Home = () => {
         <div className={css.detailsImageWrapper}>
           <img
             className={css.detailsImage}
-            src={`http://localhost:8000${myUser.avatarURL}`}
+            src={`http://localhost:3000${myUser.avatarURL}`}
             alt="User"
           />
         </div>

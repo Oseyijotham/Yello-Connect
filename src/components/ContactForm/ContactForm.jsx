@@ -30,14 +30,12 @@ export const ContactForm = ({ children }) => {
         contact.name.trim().toLowerCase() === currentName.trim().toLowerCase()
     );
     if (isNameDuplicate) {
-      alert('This name already exists');
-
+      Notiflix.Notify.warning('This name already exists');
       return;
     }
 
     if (currentName.trim() === "") {
-      alert('Empty spaces are not allowed');
-
+ Notiflix.Notify.warning('Empty spaces are not allowed');
       return;
     }
 

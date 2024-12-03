@@ -54,7 +54,7 @@ export const Home = () => {
         <div className={css.detailsImageWrapper}>
           <img
             className={css.detailsImage}
-            src={`http://localhost:3000${myUser.avatarURL}`}
+            src={`https://yello-backend-s03r.onrender.com${myUser.avatarURL}`}
             alt="User"
           />
         </div>

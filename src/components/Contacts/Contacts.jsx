@@ -227,7 +227,7 @@ export const Contacts = () => {
           <div className={css.detailsImageWrapper}>
             <img
               className={css.detailsImage}
-              src={`http://localhost:8000${myContact.avatarURL}`}
+              src={`https://yello-backend-s03r.onrender.com${myContact.avatarURL}`}
               alt="Contact"
             />
           </div>

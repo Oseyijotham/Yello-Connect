@@ -16,7 +16,7 @@ const clearAuthHeader = () => {
 export const register = createAsyncThunk(
   'auth/register',
   async ({ firstName, lastName, email, phone, password }, thunkAPI) => {
-    Notiflix.Loading.pulse('Registering Your Account...', {
+    Notiflix.Loading.pulse('Registering Your Account...Please wait a bit, first requests can take up to 60 seconds', {
       svgColor: 'rgb(235, 144, 25)',
       fontFamily: 'DM Sans',
     });

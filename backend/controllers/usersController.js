@@ -1,5 +1,4 @@
 import bcrypt from "bcryptjs";
-import gravatar from "gravatar";
 import jwt from "jsonwebtoken";
 import "dotenv/config";
 import Jimp from "jimp";
@@ -9,7 +8,6 @@ import { User } from "../models/usersModel.js";
 // prettier-ignore
 import { signupValidation, loginValidation } from "../validations/validation.js";
 import { httpError } from "../helpers/httpError.js";
-import { sendEmail } from "../helpers/sendEmail.js";
 import { v4 as uuid4 } from "uuid";
 
 const { SECRET_KEY, PORT } = process.env;

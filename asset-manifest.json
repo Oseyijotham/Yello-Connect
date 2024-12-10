@@ -1,12 +1,12 @@
 {
   "files": {
     "main.css": "/Yello-Connect/static/css/main.0b2d5a00.css",
-    "main.js": "/Yello-Connect/static/js/main.49c032ff.js",
+    "main.js": "/Yello-Connect/static/js/main.d2563d6e.js",
     "static/css/900.12a2d8e9.chunk.css": "/Yello-Connect/static/css/900.12a2d8e9.chunk.css",
     "static/js/900.73ca71bc.chunk.js": "/Yello-Connect/static/js/900.73ca71bc.chunk.js",
     "static/css/518.5e161916.chunk.css": "/Yello-Connect/static/css/518.5e161916.chunk.css",
     "static/js/518.59da53e2.chunk.js": "/Yello-Connect/static/js/518.59da53e2.chunk.js",
-    "static/css/163.e7979808.chunk.css": "/Yello-Connect/static/css/163.e7979808.chunk.css",
+    "static/css/163.b010565a.chunk.css": "/Yello-Connect/static/css/163.b010565a.chunk.css",
     "static/js/163.105f2bc3.chunk.js": "/Yello-Connect/static/js/163.105f2bc3.chunk.js",
     "static/css/433.e2d97db6.chunk.css": "/Yello-Connect/static/css/433.e2d97db6.chunk.css",
     "static/js/433.b15545a7.chunk.js": "/Yello-Connect/static/js/433.b15545a7.chunk.js",
@@ -17,12 +17,12 @@
     "static/media/icons.svg": "/Yello-Connect/static/media/icons.77c8d2ef0bd65aab65a1e4f05688514c.svg",
     "index.html": "/Yello-Connect/index.html",
     "main.0b2d5a00.css.map": "/Yello-Connect/static/css/main.0b2d5a00.css.map",
-    "main.49c032ff.js.map": "/Yello-Connect/static/js/main.49c032ff.js.map",
+    "main.d2563d6e.js.map": "/Yello-Connect/static/js/main.d2563d6e.js.map",
     "900.12a2d8e9.chunk.css.map": "/Yello-Connect/static/css/900.12a2d8e9.chunk.css.map",
     "900.73ca71bc.chunk.js.map": "/Yello-Connect/static/js/900.73ca71bc.chunk.js.map",
     "518.5e161916.chunk.css.map": "/Yello-Connect/static/css/518.5e161916.chunk.css.map",
     "518.59da53e2.chunk.js.map": "/Yello-Connect/static/js/518.59da53e2.chunk.js.map",
-    "163.e7979808.chunk.css.map": "/Yello-Connect/static/css/163.e7979808.chunk.css.map",
+    "163.b010565a.chunk.css.map": "/Yello-Connect/static/css/163.b010565a.chunk.css.map",
     "163.105f2bc3.chunk.js.map": "/Yello-Connect/static/js/163.105f2bc3.chunk.js.map",
     "433.e2d97db6.chunk.css.map": "/Yello-Connect/static/css/433.e2d97db6.chunk.css.map",
     "433.b15545a7.chunk.js.map": "/Yello-Connect/static/js/433.b15545a7.chunk.js.map",
@@ -32,6 +32,6 @@
   },
   "entrypoints": [
     "static/css/main.0b2d5a00.css",
-    "static/js/main.49c032ff.js"
+    "static/js/main.d2563d6e.js"
   ]
 }

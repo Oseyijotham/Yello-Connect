@@ -46,7 +46,7 @@ export const handleFilterBackwardDown = createAsyncThunk(
 export const updateContactAvatar = createAsyncThunk(
   'contacts/updateContactAvatar',
   async ({myFile, myId}, thunkAPI) => {
-    Notiflix.Loading.pulse('Updating Your Picture...', {
+    Notiflix.Loading.pulse('Updating Contact Picture...', {
       svgColor: 'rgb(235, 144, 25)',
       fontFamily: 'DM Sans',
     });

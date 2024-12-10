@@ -301,6 +301,8 @@ border: 1px solid #fff;
   color: rgb(114, 17, 17);
   font-family: 'DM Sans';
   font-weight: 700;
+  max-width: 205px;
+  overflow: hidden;
 }
 
 .detailsValInputPhone{

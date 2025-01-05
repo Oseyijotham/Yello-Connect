@@ -46,6 +46,7 @@ export const register = createAsyncThunk(
 export const logIn = createAsyncThunk(
   'auth/login',
   async ({ email, password }, thunkAPI) => {
+     alert('Please wait a bit, first requests can take up to 60 seconds because the backend is hosted with a free plan');
     Notiflix.Loading.pulse('Logging You In...', {
       svgColor: 'rgb(235, 144, 25)',
       fontFamily: 'DM Sans',
